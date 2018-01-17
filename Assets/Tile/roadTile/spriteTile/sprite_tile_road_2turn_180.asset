@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5eea68f9ae146639daf03572ae53eb, type: 3}
+  m_Name: sprite_tile_road_2turn_180
+  m_EditorClassIdentifier: 
+  customSprite: {fileID: 21300000, guid: 79b7449f83c5a4a9e9979137849127cd, type: 3}
+  rotateAngle: 180
+  color: {r: 1, g: 1, b: 1, a: 1}

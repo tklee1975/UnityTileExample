@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cab823dafffd4a95b08b7fe505b9bbe, type: 3}
+  m_Name: RandomTile_flower
+  m_EditorClassIdentifier: 
+  spriteList:
+  - {fileID: 21300048, guid: 9eec1f2d4472c4328877105b01c8c67b, type: 3}
+  - {fileID: 21300050, guid: 9eec1f2d4472c4328877105b01c8c67b, type: 3}
+  - {fileID: 21300042, guid: 9eec1f2d4472c4328877105b01c8c67b, type: 3}
+  - {fileID: 21300030, guid: 9eec1f2d4472c4328877105b01c8c67b, type: 3}
