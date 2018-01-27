@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e4e4fc705376343a3e65b25d94f0e2, type: 3}
+  m_Name: unity_terrain_autotile
+  m_EditorClassIdentifier: 
+  m_Sprites:
+  - {fileID: 21300000, guid: 3e8341d9597294ae39779c50bc259f93, type: 3}
+  - {fileID: 21300000, guid: 01feaf1a6e6d9423b83150620c2fd945, type: 3}
+  - {fileID: 21300000, guid: 5d7a2794a9e8841258776affbb24f3b6, type: 3}
+  - {fileID: 21300000, guid: 926ba0183c26e4f199ef511650e2e452, type: 3}
+  - {fileID: 21300000, guid: 08acd3332ecc849f2a75d91b1d14fb0c, type: 3}
+  - {fileID: 21300000, guid: 2c7cb15dc06744c2b962b06fce378827, type: 3}
+  - {fileID: 21300000, guid: cfeffc191f20042c79a52845055a4fe2, type: 3}
+  - {fileID: 21300000, guid: 5ac362f45de5a4c82982f7444d172a3b, type: 3}
+  - {fileID: 21300000, guid: fc956ea30a97a409db565a7018a68254, type: 3}
+  - {fileID: 21300000, guid: eff3ee61609ab4c2fb89b43f0f1581f6, type: 3}
+  - {fileID: 21300000, guid: ad02e802973f947a7bf07e7c24695b5d, type: 3}
+  - {fileID: 21300000, guid: 395622caf91d34930afdf8377b34a6e4, type: 3}
+  - {fileID: 21300000, guid: 47fdbb817bcaa45c0b0c6fc54556bcff, type: 3}
+  - {fileID: 21300000, guid: 92c62833b347e4027b9db09439a017f5, type: 3}
+  - {fileID: 21300000, guid: d95a3f447d9fd484fb02ccb88ffa9750, type: 3}

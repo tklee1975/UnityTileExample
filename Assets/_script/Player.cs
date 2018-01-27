@@ -5,12 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 	public float speed = 10;
 
+	public Vector2Int mMoveDir = Vector2Int.zero;
+
+	private bool mIsColliding = false;
+
 	// Use this for initialization
 	void Start () {
 		
 	}
 
-	void Move(Vector2 moveVec) {
+	void Move(Vector2Int moveVec) {
 
 		Vector3 transVec = new Vector3(moveVec.x, moveVec.y, 0f) * speed * Time.deltaTime;
 		transform.Translate (transVec);
@@ -21,14 +25,29 @@ public class Player : MonoBehaviour {
 	}
 
 	void HandleMovement() {
+		Vector2Int newMove = Vector2Int.zero;
+
 		if (Input.GetKey (KeyCode.UpArrow)) {
-			Move (new Vector2 (0, 1));
+			newMove = new Vector2Int (0, 1);
+
 		} else if (Input.GetKey (KeyCode.DownArrow)) {
-			Move (new Vector2(0, -1));
+			newMove = new Vector2Int(0, -1);
 		} else if (Input.GetKey (KeyCode.LeftArrow)) {
-			Move (new Vector2(-1, 0));
+			newMove = new Vector2Int(-1, 0);
 		} else if (Input.GetKey (KeyCode.RightArrow)) {
-			Move (new Vector2(1, 0));
+			newMove = new Vector2Int(1, 0);
+		}
+
+		if (mIsColliding && newMove == mMoveDir) {
+		}
+
+		if (newMove != mMoveDir) {
+			mMoveDir = newMove;
+			mIsColliding = false;
+		}
+
+		if (mIsColliding == false) {			
+			Move (mMoveDir);
 		}
 	}
 
@@ -43,10 +62,110 @@ public class Player : MonoBehaviour {
 
 		Camera.main.transform.position = pos;
 	}
-	
+
+
+	Vector2 FindCollisionDiff(Bounds myBox, Bounds box) {
+		if (myBox.Intersects (box) == false) {
+			return new Vector2 (0, 0);
+		}
+
+		Debug.Log ("MoveDir=" + mMoveDir);
+		Debug.Log ("myMax:" + myBox.max + " myMin:" + myBox.min);
+		Debug.Log ("max:" + box.max + " min:" + box.min);
+
+		float xDiff = 0;
+		float yDiff = 0;
+
+		if (mMoveDir.x < 0) {		// Checking the left bound diff
+			xDiff = myBox.min.x - box.max.x;		// if collide, value is -ve
+		}else if (mMoveDir.x > 0) {		// Checking the left bound diff
+			xDiff = myBox.max.x - box.min.x; 		// if collide, value is -ve 
+		}else if (mMoveDir.y < 0) {		// Checking the left bound diff
+			yDiff = myBox.max.y - box.min.y;		// if collide, value is -ve
+		}else if (mMoveDir.y > 0) {		// Checking the left bound diff
+			yDiff = myBox.min.y - box.max.y; 		// if collide, value is -ve 
+		}
+
+
+//		float upperDiff = myBox.max.y - box.min.y;		// if collide, value is -ve
+//		float lowerDiff = myBox.min.y - box.max.y; 		// if collide, value is -ve 
+//
+//
+//		float yDiff = 0;
+//		if (upperDiff > 0) {
+//			yDiff = upperDiff;
+//		}else if (lowerDiff > 0) {
+//			yDiff = lowerDiff;
+//		}
+//
+//
+//		float rightDiff = myBox.max.x - box.min.x; 		// if collide, value is -ve 
+//
+//		float xDiff = 0;
+//		if (leftDiff > 0) {
+//			xDiff = leftDiff;
+//		} else if (rightDiff > 0) {
+//			xDiff = rightDiff;
+//		}
+//
+		return new Vector2 (xDiff, yDiff);
+	}
+
+	void OnTriggerEnter2D(Collider2D coll) {
+		Debug.Log ("enter trigger. coll=" + coll.gameObject.transform);
+
+		BoxCollider2D box = coll.gameObject.GetComponent<BoxCollider2D> ();
+		BoxCollider2D myBox = gameObject.GetComponent<BoxCollider2D> ();
+
+		mIsColliding = true;
+
+		Vector2 diff = FindCollisionDiff (myBox.bounds, box.bounds);
+
+		Debug.Log ("box:" + box.bounds + " myBox:" + myBox.bounds + " diff=" + diff);
+
+		//  Adjust the game object 
+		Vector3 pos = transform.position;
+		pos.x -= (diff.x);
+		pos.y -= (diff.y);
+
+		Debug.Log ("transform Before=" + transform.position);
+		transform.position = pos;
+		Debug.Log ("transform after=" + transform.position);
+	}
+
+	void OnTriggerExit2D(Collider2D coll) {
+		mIsColliding = false;
+	}
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		Debug.Log ("enter collision. coll=" + coll.gameObject.transform);
+
+		BoxCollider2D box = coll.gameObject.GetComponent<BoxCollider2D> ();
+		BoxCollider2D myBox = gameObject.GetComponent<BoxCollider2D> ();
+
+
+		Vector2 diff = FindCollisionDiff (myBox.bounds, box.bounds);
+
+		Debug.Log ("box:" + box.bounds + " myBox:" + myBox.bounds + " diff=" + diff);
+
+		//  Adjust the game object 
+		Vector3 pos = transform.position;
+		pos.x -= (diff.x);
+		//pos.y -= (diff.y);
+
+		transform.position = pos;
+	}
+
+	void OnCollisionExit2D(Collision2D coll) {
+		Debug.Log ("exit collision. coll=" + coll);
+		mIsColliding = false;
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 		HandleMovement ();
+
 			
 		UpdateCameraPos ();
 	}
