@@ -27,9 +27,22 @@ public class SimpleRoadTileEditor : Editor
 
 	public override void OnInspectorGUI()
 	{
+		// Check and update the when the given value are changed!!
 		EditorGUI.BeginChangeCheck();
 
 
+
+//		EditorGUILayout.LabelField("Tile Sprite Setting");
+//		var serializedObject = new SerializedObject(tile);
+//		var property = serializedObject.FindProperty("spriteList");
+//		serializedObject.Update();
+//		EditorGUILayout.PropertyField(property, true);
+//		serializedObject.ApplyModifiedProperties();
+
+		// ----------
+
+//		EditorGUILayout.Space ();
+		EditorGUILayout.LabelField("Tile Preview");
 		int idx;
 		string name;
 

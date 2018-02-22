@@ -61,12 +61,12 @@ public class SimpleRoadTile : TileBase {
 	{
 		Debug.Log ("GetTileData: location=" + location);
 
-		int mask = HasRoadTile(tileMap, location + new Vector3Int(0, 1, 0)) ? UP : 0;
-		mask += HasRoadTile(tileMap, location + new Vector3Int(0, -1, 0)) ? DOWN : 0;
-		mask += HasRoadTile(tileMap, location + new Vector3Int(1, 0, 0)) ? RIGHT : 0;
-		mask += HasRoadTile(tileMap, location + new Vector3Int(-1, 0, 0)) ? LEFT : 0;
+		int flag = HasRoadTile(tileMap, location + new Vector3Int(0, 1, 0)) ? UP : 0;
+		flag += HasRoadTile(tileMap, location + new Vector3Int(0, -1, 0)) ? DOWN : 0;
+		flag += HasRoadTile(tileMap, location + new Vector3Int(1, 0, 0)) ? RIGHT : 0;
+		flag += HasRoadTile(tileMap, location + new Vector3Int(-1, 0, 0)) ? LEFT : 0;
 
-		Vector2Int spriteAndRotation = GetSpriteAndRotation (mask);
+		Vector2Int spriteAndRotation = GetSpriteAndRotation (flag);
 
 		int spriteIndex = spriteAndRotation.x;
 		int rotation = spriteAndRotation.y;

@@ -17,8 +17,7 @@ public class RoadTileEditor : Editor
 
 	public override void OnInspectorGUI()
 	{
-		EditorGUI.BeginChangeCheck();
-
+		//EditorGUI.BeginChangeCheck();
 
 		// 
 		tile.insideSprite = (Sprite) EditorGUILayout.ObjectField("Inside", tile.insideSprite, typeof(Sprite), false, null);
@@ -26,9 +25,9 @@ public class RoadTileEditor : Editor
 		tile.turnSprite1 = (Sprite) EditorGUILayout.ObjectField("Turn 1", tile.turnSprite1, typeof(Sprite), false, null);
 		tile.turnSprite2 = (Sprite) EditorGUILayout.ObjectField("Turn 2", tile.turnSprite2, typeof(Sprite), false, null);
 
-		if (EditorGUI.EndChangeCheck ()) {
-			EditorUtility.SetDirty (tile);
-		}
+//		if (EditorGUI.EndChangeCheck ()) {
+//			EditorUtility.SetDirty (tile);
+//		}
 	}
 }
 #endif

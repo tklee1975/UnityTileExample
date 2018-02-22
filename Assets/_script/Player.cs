@@ -113,6 +113,7 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		Debug.Log ("enter trigger. coll=" + coll.gameObject.transform);
+		Debug.Log ("enter trigger. overlapPoint= offset=" + coll.offset);
 
 		BoxCollider2D box = coll.gameObject.GetComponent<BoxCollider2D> ();
 		BoxCollider2D myBox = gameObject.GetComponent<BoxCollider2D> ();
