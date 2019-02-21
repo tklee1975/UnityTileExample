@@ -11,6 +11,8 @@ public class MoveControl : MonoBehaviour {
 	// Internal Data 
 	protected Rigidbody2D mRigidBody;
 
+
+	#region Setup Logic 
 	// initialization
 	void OnEnable()
 	{
@@ -20,6 +22,10 @@ public class MoveControl : MonoBehaviour {
 	void Start () {
 		
 	}
+	#endregion
+
+
+	#region Update Logic
 	
 	// Update is called once per frame
 	void Update () {
@@ -60,4 +66,5 @@ public class MoveControl : MonoBehaviour {
 			charAnime.UpdateWithMoveVector (moveDirVec);
 		}
 	}
+	#endregion
 }
